@@ -17,7 +17,7 @@ function MovieList() {
        const showDetails = () => {
         console.log("in showDetails");
         history.push("/details");
-        
+
       };
    
 
@@ -28,9 +28,9 @@ function MovieList() {
                 {movies.map(movie => {
                     return (
                         <div key={movie.id} >
-                            <h3>{movie.title}</h3>
+                            {/* <h3>{movie.title}</h3> */}
                             <img onClick={showDetails} src={movie.poster} alt={movie.title}/>
-                            <h5>{movie.description}</h5>
+                            {/* <h5>{movie.description}</h5> */}
                         </div>
                     );
                 })}
