@@ -27,14 +27,22 @@ function Details(props) {
   };
 
   return (
-    <main>
+    <main className="moviesDiv">
         {
             // thisMovie === undefined ?
             // (<h1>loading</h1>) :
             // ((<h1>{thisMovie.description}</h1>)
             // (<h2>{thisMovie.title}</h2>))
-
-            <h2>{thisMovie.title}</h2>
+            <div >
+            <h1>{thisMovie.title}</h1>
+            <img src={thisMovie.poster} alt="" />
+            <h2>Description</h2>
+            <h5> {thisMovie.description}</h5>
+           
+            <h2>Genres</h2>
+            
+          
+            </div>
             
             
         }

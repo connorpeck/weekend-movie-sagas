@@ -2,3 +2,8 @@
     display : flex;
     flex-wrap: wrap;
 }
+
+
+.moviesDiv{
+    color:rgb(25, 58, 87);
+}
