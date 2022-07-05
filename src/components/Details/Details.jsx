@@ -16,30 +16,27 @@ function Details(props) {
   // works but only shows the first result
   const genresToDisplay = [];
 
+  // genres.map((genre) => {
+  //   if (genre.movie_id === thisID.id){
+  //     genresToDisplay.push(genre)
+  // } // end if
+  // })
 
-  genres.map((genre) => {
-    if (genre.movie_id === thisID.id){    
-      genresToDisplay.push(genre)
-  } // end if
-  })
-    
+  //   const thisGenre =  genres.filter((genre) => {
+  //     return genre.movie_id == Number(thisID.id);
+  //   });
 
-//   const thisGenre =  genres.filter((genre) => {
-//     return genre.movie_id == Number(thisID.id);
-//   });
-
-// doesnt work yet
-// const genresToDisplay =  genres.filter((genre) => {
-//   // console.log(genre, thisID.id);
-//     return genre.movie_id === Number(thisID.id);
-//   });
-  
+  // doesnt work yet
+  // const genresToDisplay =  genres.filter((genre) => {
+  //   // console.log(genre, thisID.id);
+  //     return genre.movie_id === Number(thisID.id);
+  //   });
 
   useEffect(() => {
-    dispatch({ type: "FETCH_DETAILS" });
+    // dispatch({ type: "FETCH_DETAILS" });
     dispatch({ type: "FETCH_MOVIES" });
     // dispatch({ type: "MOVIE_TITLE" });
-    dispatch({ type: "FETCH_GENRES" , payload: thisID.id});
+    dispatch({ type: "FETCH_GENRES", payload: thisID.id });
     console.log("movie id is thisID:", thisID);
     // console.log("genres obj in /details", genres);
   }, []);
@@ -77,22 +74,13 @@ function Details(props) {
           {/* <h2>{JSON.stringify(thisGenre.name)}</h2> */}
           {/* :
             <h2>no matching genres</h2>} */}
+
+          {genres.map((genre, i) => (
+            <p key={i}>{genre.name}</p>
+          ))}
         </div>
       }
 
-      {/* This is the Details of the movie clicked
-      {genres.map((genre) => {
-        return (
-          <div key={genre.id}>
-              { thisID === genre.movie.id ?
-              
-            <h3>{genre.name}</h3>
-            :
-            <h2>no matching genres</h2>
-              }
-          </div>
-        );
-      })} */}
       <Button
         className="button"
         fullWidth={true}

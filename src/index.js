@@ -32,7 +32,7 @@ function* fetchAllMovies() {
     }
         
 } 
-function* fetchGenres() {
+function* fetchGenres(action) {
     console.log('lkjahsdlfkjhasdlkfj' , action);
     try {
         const details = yield axios.get('api/genre/?id=' + action.payload);
