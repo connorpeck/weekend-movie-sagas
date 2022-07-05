@@ -13,12 +13,18 @@ function Details(props) {
   const movies = useSelector((store) => store.movies);
   const thisID = useParams();
   const thisMovie = movies.find((movie)=> movie.id === Number(thisID.id));
+  const genresToDisplay = {
+      name: genres
+  }
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_DETAILS" });
     dispatch({ type: "FETCH_MOVIES" });
     dispatch({ type: "MOVIE_TITLE" });
+    dispatch({ type:"FETCH_GENRES"});
     console.log(thisID);
+    
   }, []);
 
   const backButton = () => {
@@ -38,9 +44,10 @@ function Details(props) {
             <img src={thisMovie.poster} alt="" />
             <h2>Description</h2>
             <h5> {thisMovie.description}</h5>
+
            
             <h2>Genres</h2>
-            
+            <h4>{JSON.stringify(genres)}</h4>
           
             </div>
             
