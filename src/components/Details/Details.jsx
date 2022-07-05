@@ -12,19 +12,17 @@ function Details(props) {
   const genres = useSelector((store) => store.genres);
   const movies = useSelector((store) => store.movies);
   const thisID = useParams();
-  const thisMovie = movies.find((movie)=> movie.id === Number(thisID.id));
-  const genresToDisplay = {
-      name: genres
-  }
-
+  const thisMovie = movies.find((movie) => movie.id === Number(thisID.id));
+  const genresToDisplay = genres.find((genre) => genre.movie_id === Number(thisID.id));
+  //   const genresToDisplay = genres.find((genre)=> )
 
   useEffect(() => {
     dispatch({ type: "FETCH_DETAILS" });
     dispatch({ type: "FETCH_MOVIES" });
     dispatch({ type: "MOVIE_TITLE" });
-    dispatch({ type:"FETCH_GENRES"});
-    console.log(thisID);
-    
+    dispatch({ type: "FETCH_GENRES" });
+    console.log("movie id is thisID:", thisID);
+    console.log("genres obj in /details", genres);
   }, []);
 
   const backButton = () => {
@@ -32,36 +30,46 @@ function Details(props) {
     history.push("/");
   };
 
+  const showGenres = () => {
+    console.log("in showGenres ", genres, "movie id", thisID);
+  };
+
   return (
     <main className="moviesDiv">
-        {
-            // thisMovie === undefined ?
-            // (<h1>loading</h1>) :
-            // ((<h1>{thisMovie.description}</h1>)
-            // (<h2>{thisMovie.title}</h2>))
-            <div >
-            <h1>{thisMovie.title}</h1>
-            <img src={thisMovie.poster} alt="" />
-            <h2>Description</h2>
-            <h5> {thisMovie.description}</h5>
+      {
+        // thisMovie === undefined ?
+        // (<h1>loading</h1>) :
+        // ((<h1>{thisMovie.description}</h1>)
+        // (<h2>{thisMovie.title}</h2>))
 
-           
-            <h2>Genres</h2>
-            <h4>{JSON.stringify(genres)}</h4>
-          
-            </div>
-            
-            
-        }
+        ////// I have thisID that captures the movie id ////
+        ///// // match that id to the movie id in the genres obj /////
+        /////// show genres.name for the matching id's /////
 
+        <div>
+          <h1>{thisMovie.title}</h1>
+          <img src={thisMovie.poster} alt="" />
+          <h2>Description</h2>
+          <h5> {thisMovie.description}</h5>
 
+          <h2 onClick={showGenres}>Genres</h2>
+          {/* { thisID === (genres.movie.id) ?  */}
+          <h4>{genresToDisplay.name}</h4>
+          {/* :
+            <h2>no matching genres</h2>} */}
+        </div>
+      }
 
       {/* This is the Details of the movie clicked
       {genres.map((genre) => {
         return (
           <div key={genre.id}>
+              { thisID === genre.movie.id ?
+              
             <h3>{genre.name}</h3>
-            <h2>{thisMovie}</h2>
+            :
+            <h2>no matching genres</h2>
+              }
           </div>
         );
       })} */}
