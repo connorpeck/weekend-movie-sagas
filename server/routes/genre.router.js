@@ -3,8 +3,10 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
-  const query = `SELECT * FROM genres JOIN movies_genres ON genres.id = movies_genres.genre_id;`;
-  pool.query(query)
+  console.log(req.query);
+  const query = ` SELECT (genres.name) FROM genres JOIN movies_genres ON genres.id = movies_genres.genre_id WHERE movie_id = $1;`;
+  const values = [req.query.id];
+  pool.query(query, values)
   .then( result => {
     res.send(result.rows);
   }).catch(err => {

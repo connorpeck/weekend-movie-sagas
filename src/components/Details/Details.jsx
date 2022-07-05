@@ -14,7 +14,15 @@ function Details(props) {
   const thisID = useParams();
   const thisMovie = movies.find((movie) => movie.id === Number(thisID.id));
   // works but only shows the first result
-  const genresToDisplay = genres.find((genre) => genre.movie_id === Number(thisID.id));
+  const genresToDisplay = [];
+
+
+  genres.map((genre) => {
+    if (genre.movie_id === thisID.id){    
+      genresToDisplay.push(genre)
+  } // end if
+  })
+    
 
 //   const thisGenre =  genres.filter((genre) => {
 //     return genre.movie_id == Number(thisID.id);
@@ -22,6 +30,7 @@ function Details(props) {
 
 // doesnt work yet
 // const genresToDisplay =  genres.filter((genre) => {
+//   // console.log(genre, thisID.id);
 //     return genre.movie_id === Number(thisID.id);
 //   });
   
@@ -30,9 +39,9 @@ function Details(props) {
     dispatch({ type: "FETCH_DETAILS" });
     dispatch({ type: "FETCH_MOVIES" });
     dispatch({ type: "MOVIE_TITLE" });
-    dispatch({ type: "FETCH_GENRES" });
+    dispatch({ type: "FETCH_GENRES" , payload: thisID.id});
     console.log("movie id is thisID:", thisID);
-    console.log("genres obj in /details", genres);
+    // console.log("genres obj in /details", genres);
   }, []);
 
   const backButton = () => {
@@ -64,7 +73,7 @@ function Details(props) {
 
           <h2 onClick={showGenres}>Genres</h2>
           {/* { thisID === (genres.movie.id) ?  */}
-          <h4>{genresToDisplay.name}</h4>
+          {/* <h4>{JSON.stringify(genresToDisplay)}</h4> */}
           {/* <h2>{JSON.stringify(thisGenre.name)}</h2> */}
           {/* :
             <h2>no matching genres</h2>} */}
