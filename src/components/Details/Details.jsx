@@ -38,7 +38,7 @@ function Details(props) {
   useEffect(() => {
     dispatch({ type: "FETCH_DETAILS" });
     dispatch({ type: "FETCH_MOVIES" });
-    dispatch({ type: "MOVIE_TITLE" });
+    // dispatch({ type: "MOVIE_TITLE" });
     dispatch({ type: "FETCH_GENRES" , payload: thisID.id});
     console.log("movie id is thisID:", thisID);
     // console.log("genres obj in /details", genres);

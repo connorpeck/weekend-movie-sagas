@@ -1,9 +1,8 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# Weekend Movies Sagas 
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+This project contains a list of movies, with cover art, description and genres. They are diplayed on the dom as cover art and when clicked it brings you to a new route that shows more details for that specific movie. 
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Screenshot
+![weekendmoviessagas](https://user-images.githubusercontent.com/90285369/177412027-ad829dfa-c26f-45ea-bae0-cb964b223e6c.gif)
