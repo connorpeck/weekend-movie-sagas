@@ -13,8 +13,18 @@ function Details(props) {
   const movies = useSelector((store) => store.movies);
   const thisID = useParams();
   const thisMovie = movies.find((movie) => movie.id === Number(thisID.id));
+  // works but only shows the first result
   const genresToDisplay = genres.find((genre) => genre.movie_id === Number(thisID.id));
-  //   const genresToDisplay = genres.find((genre)=> )
+
+//   const thisGenre =  genres.filter((genre) => {
+//     return genre.movie_id == Number(thisID.id);
+//   });
+
+// doesnt work yet
+// const genresToDisplay =  genres.filter((genre) => {
+//     return genre.movie_id === Number(thisID.id);
+//   });
+  
 
   useEffect(() => {
     dispatch({ type: "FETCH_DETAILS" });
@@ -55,6 +65,7 @@ function Details(props) {
           <h2 onClick={showGenres}>Genres</h2>
           {/* { thisID === (genres.movie.id) ?  */}
           <h4>{genresToDisplay.name}</h4>
+          {/* <h2>{JSON.stringify(thisGenre.name)}</h2> */}
           {/* :
             <h2>no matching genres</h2>} */}
         </div>
